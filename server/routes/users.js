@@ -1,12 +1,10 @@
 import express from 'express'
 import UsersController from '../controllers/UserControllers'
+import { validator } from '../middlewares'
+import getOneUserSchema from '../validate-schemas/user'
+
 const router = express.Router()
 
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.send('respond with a resource')
-})
-
-router.get('/get-all', UsersController.getAllUsers)
+router.post('/get-one', validator(getOneUserSchema), UsersController.getOneUser)
 
 export default router

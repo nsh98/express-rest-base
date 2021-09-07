@@ -1,13 +1,14 @@
 import db from '../config/connectDB'
+import response from '../utils/response'
 
 class UserServices {
-  static async getAllUsers () {
+  static async getOneUser (id) {
     try {
-      const connection = db('employees')
-      const users = await connection.select()
-      return users
+      const connection = db('user')
+      const users = await connection.select().where({ id, is_delete: 0 })
+      return response.SUCCESS('get success', users)
     } catch (error) {
-      return error.message
+      return response.ERROR(500, error.message)
     }
   }
 }

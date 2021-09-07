@@ -1,6 +1,7 @@
 import UserServices from '../services/UserServices'
 
-exports.getAllUsers = async (req, res) => {
-  const response = await UserServices.getAllUsers()
-  return res.send(response)
+exports.getOneUser = async (req, res) => {
+  const { id } = req.body
+  const response = await UserServices.getOneUser(id)
+  return res.status(response.code).send(response.data)
 }
