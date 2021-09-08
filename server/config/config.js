@@ -1,3 +1,4 @@
+import LOGGER from '../utils/logger'
 require('dotenv').config()
 
 const CONFIG = {
@@ -10,7 +11,21 @@ const CONFIG = {
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_SCHEMAS
     },
-    pool: { min: 10, max: 150 }
+    pool: { min: 10, max: 150 },
+    log: {
+      warn (message) {
+        LOGGER.DB.query(message)
+      },
+      error (message) {
+        LOGGER.DB.error(message).bind(LOGGER.DB)
+      },
+      deprecate (message) {
+        LOGGER.DB.query(message)
+      },
+      debug (message) {
+        LOGGER.DB.query(message)
+      }
+    }
   }
 }
 export default CONFIG
