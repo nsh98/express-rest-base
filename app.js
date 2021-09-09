@@ -33,6 +33,14 @@ app.use((req, res, next) => {
 // Route
 app.use('/user', usersRouter)
 
+// Handle unknown route
+app.use((req, res) => {
+  res.status(404).send({
+    result: false,
+    message: `${req.url} not found!`
+  })
+})
+
 app.listen(port, () => {
   console.log(`Server is listening on ${host}:${port}`)
 })
