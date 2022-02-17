@@ -19,19 +19,15 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'server/public')))
 app.use(helmet())
 
-// HOST + PORT
-const host = process.env.HOST
-const port = process.env.PORT
-
 // logger
-
 app.use((req, res, next) => {
   LOGGER.HTTP.request(req)
   next()
 })
 
+const { PREFIX } = process.env
 // Route
-app.use('/user', usersRouter)
+app.use(`${PREFIX}/user`, usersRouter)
 
 // Handle unknown route
 app.use((req, res) => {
@@ -41,6 +37,4 @@ app.use((req, res) => {
   })
 })
 
-app.listen(port, () => {
-  console.log(`Server is listening on ${host}:${port}`)
-})
+export default app

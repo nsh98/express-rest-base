@@ -1,34 +1,28 @@
 class Response {
-  static SUCCESS (message = '', data = null) {
+  static SUCCESS (message = '', data = null, code = 200) {
     return {
-      code: 200,
-      data: {
-        result: true,
-        message,
-        data
-      }
+      code,
+      result: true,
+      message,
+      data
     }
   }
 
   static ERROR (code = 500, message = '', data = null) {
     return {
       code,
-      data: {
-        result: false,
-        message,
-        data
-      }
+      result: false,
+      message,
+      data
     }
   }
 
   static WARN (code = 400, message = '', data = null) {
     return {
       code,
-      data: {
-        result: false,
-        message,
-        data
-      }
+      result: false,
+      message,
+      data
     }
   }
 }

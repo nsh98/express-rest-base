@@ -3,9 +3,9 @@ require('dotenv').config()
 
 const CONFIG = {
   DB_CONFIG: {
-    client: 'mysql',
+    client: 'mysql2',
     connection: {
-      host: process.env.HOST,
+      host: process.env.DATABASE_HOST,
       port: process.env.DATABASE_PORT,
       user: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,

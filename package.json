@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node app.js",
+    "dev": "nodemon --exec npx babel-node server.js",
+    "start": "npx babel-node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -22,8 +23,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.21",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.3.0",
+    "mysql2": "^2.3.3",
     "winston": "^3.3.3"
   },
   "devDependencies": {
